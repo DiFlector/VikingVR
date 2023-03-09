@@ -209,6 +209,7 @@ GameObject:
   - component: {fileID: 400006}
   - component: {fileID: 3300002}
   - component: {fileID: 2300002}
+  - component: {fileID: 2122424711190013216}
   m_Layer: 0
   m_Name: Stars
   m_TagString: Untagged
@@ -281,6 +282,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2122424711190013216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e9b6c0c859831b468817c521136583b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  star: {fileID: 400006}
 --- !u!1 &100008
 GameObject:
   m_ObjectHideFlags: 0
