@@ -4,19 +4,30 @@ using UnityEngine;
 
 public class StarsFadeOut : MonoBehaviour
 {
-    [SerializeField]
-    private Transform Star;
-    int i = 0;
+    public MeshRenderer Stars;
+    Color clr = Color.white;
+    float i = 0;
     // Start is called before the first frame update
     void Start()
     {
-        
+        /*
+        Stars.material.SetColor("_Color", clr);
+        Debug.Log(Stars.material.color);*/
     }
 
     // Update is called once per frame
     void Update()
     {
-        Star.transform.position(1 + i, 1 + i, 1 + i);
+        
+    }
+
+    void FixedUpdate()
+    {
+        /*
         i++;
+        if (i >= 60) { i = 0; }
+        clr.a = i/60;
+        Stars.material.SetColor("_Color", clr);
+        Debug.Log(Stars.material.color); */
     }
 }
