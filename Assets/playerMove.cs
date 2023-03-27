@@ -12,7 +12,7 @@ public class playerMove : MonoBehaviour
     [SerializeField]
     private Transform camera;
     private Rigidbody rb;
-    public float speed = 300000f;
+    public float speed = 1;
     public float mouseSensitivity = 0.5f;
     private Vector2 cameraRotation;
     private Vector3 velocity;
