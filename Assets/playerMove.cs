@@ -3,14 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class playerMove : MonoBehaviour
 {
     [SerializeField]
     private Transform player;
     [SerializeField]
-    private Transform camera;
+    private Transform camera = null;
     private Rigidbody rb;
     public float speed = 1;
     public float mouseSensitivity = 0.5f;
