@@ -319,7 +319,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 41488636}
-  m_LocalRotation: {x: 0.0066003464, y: 5.5508736e-17, z: -2.991049e-19, w: 0.99997824}
+  m_LocalRotation: {x: 0.0066003473, y: -4.6565116e-10, z: 3.0735262e-12, w: 0.99997824}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -765,7 +765,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 242674295}
-  m_LocalRotation: {x: -0.011541808, y: 5.376636e-10, z: 6.2060235e-12, w: 0.9999334}
+  m_LocalRotation: {x: -0.01154181, y: -5.376636e-10, z: -6.2060244e-12, w: 0.9999334}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1320,12 +1320,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 791c8b00d744d40478338e062d9fc776, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 610884586}
-  cam: {fileID: 705582765}
-  speed: 6
-  gravity: -9.81
-  jumpHeight: 1
-  turnSmoothTime: 0.1
+  gravity: -9
+  jumpForce: 6
+  speed: 3
 --- !u!1 &705582762
 GameObject:
   m_ObjectHideFlags: 0
@@ -1403,7 +1400,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705582762}
-  m_LocalRotation: {x: 0.006600344, y: 4.656512e-10, z: -3.0735256e-12, w: 0.99997824}
+  m_LocalRotation: {x: 0.006600344, y: -6.585303e-10, z: 4.3466207e-12, w: 0.99997824}
   m_LocalPosition: {x: 0, y: 1.46, z: -9.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2121,7 +2118,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 979742213}
-  m_LocalRotation: {x: 0.024788355, y: -0.000000017234651, z: 4.2735e-10, w: 0.99969274}
+  m_LocalRotation: {x: 0.024788335, y: 0.00000001723466, z: -4.2734988e-10, w: 0.99969274}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
