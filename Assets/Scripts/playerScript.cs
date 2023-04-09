@@ -11,6 +11,7 @@ public class playerScript : MonoBehaviour
     public Transform cam;
     private Animator animator;
 
+    public Transform axe;
 
     public float walkSpeed = 6f;
     public float runSpeed = 12f;
@@ -35,6 +36,9 @@ public class playerScript : MonoBehaviour
 
     void Update()
     {
+        axe.rotation = cam.rotation;
+        axe.Rotate(new Vector3(90f, 90f, 90f));
+
         //jump
         isGrounded = Physics.CheckBox(groundCheck.transform.position, groundCheck.GetComponent<BoxCollider>().size/2, new Quaternion(), groundMask);
         if (isGrounded && velocity.y < 0)
