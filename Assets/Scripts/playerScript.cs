@@ -12,14 +12,17 @@ public class playerScript : MonoBehaviour
     public CharacterController controller;
     public Transform cam;
 
-    public float speed = 6;
+
+    public float walkSpeed = 6f;
+    public float runSpeed = 12f;
+    private float speed = 6f;
     public float gravity = -9.81f;
-    public float jumpHeight = 3;
+    public float jumpHeight = 3f;
     Vector3 velocity;
     bool isGrounded;
 
     public Transform groundCheck;
-    public float groundDistance = 0.4f;
+    public float groundDistance = 0.01f;
     public LayerMask groundMask;
 
     float turnSmoothVelocity;
@@ -28,6 +31,7 @@ public class playerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        speed = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;
         //jump
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
