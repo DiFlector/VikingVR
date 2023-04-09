@@ -20,13 +20,13 @@ public class cloudMove : MonoBehaviour
     {
         foreach (var cloud in cloudList)
         {
-            if (cloud.transform.position.z > -500)
+            if (cloud.transform.position.z > -700)
             {
-                cloud.transform.position = new Vector3(cloud.transform.position.x, cloud.transform.position.y, cloud.transform.position.z - 4);
+                cloud.transform.position = new Vector3(cloud.transform.position.x, cloud.transform.position.y, cloud.transform.position.z - 0.025f);
             }
             else
             {
-                cloud.transform.position = new Vector3(cloud.transform.position.x, cloud.transform.position.y, cloud.transform.position.z + 1000);
+                cloud.transform.position = new Vector3(cloud.transform.position.x, cloud.transform.position.y, cloud.transform.position.z + 1400);
             }
         }
     }

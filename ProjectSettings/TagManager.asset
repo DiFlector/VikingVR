@@ -15,10 +15,10 @@ TagManager:
   - 
   - XR Teleport
   - Post-Processing
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Interactable
+  - groundCheck
+  - World
   - 
   - 
   - 
