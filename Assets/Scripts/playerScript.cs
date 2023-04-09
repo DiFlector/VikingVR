@@ -1,6 +1,4 @@
 using System.Collections;
-
-
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Security.Cryptography;
@@ -11,16 +9,17 @@ public class playerScript : MonoBehaviour
 {
     public CharacterController controller;
     public Transform cam;
+    private Animator animator;
 
 
     public float walkSpeed = 6f;
     public float runSpeed = 12f;
     private float speed = 6f;
     public float gravity = -9.81f;
-    public float jumpHeight = 3f;
+    public float jumpForce = 3f;
+
     Vector3 velocity;
     bool isGrounded;
-
     public Transform groundCheck;
     public float groundDistance = 0.01f;
     public LayerMask groundMask;
@@ -28,26 +27,29 @@ public class playerScript : MonoBehaviour
     float turnSmoothVelocity;
     public float turnSmoothTime = 0.1f;
 
-    // Update is called once per frame
+    private void Awake()
+    {
+        controller = GetComponent<CharacterController>();
+        animator = GetComponent<Animator>();
+    }
+
     void Update()
     {
-        speed = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;
         //jump
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-
+        isGrounded = Physics.CheckBox(groundCheck.transform.position, groundCheck.GetComponent<BoxCollider>().size/2, new Quaternion(), groundMask);
         if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
         }
-
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
+            velocity.y = jumpForce;
         }
         //gravity
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
         //walk
+        speed = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
@@ -61,5 +63,10 @@ public class playerScript : MonoBehaviour
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
         }
+    }
+
+    private void AnimationController(string animation)
+    {
+        animator.SetTrigger(animation);
     }
 }
