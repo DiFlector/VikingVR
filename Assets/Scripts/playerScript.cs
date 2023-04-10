@@ -11,13 +11,13 @@ public class playerScript : MonoBehaviour
     public Transform cam;
     private Animator animator;
 
-    public Transform axe;
-
     public float walkSpeed = 6f;
     public float runSpeed = 12f;
     private float speed = 6f;
     public float gravity = -9.81f;
     public float jumpForce = 3f;
+    public string currentAnimation;
+    private string previousAnimation;
 
     Vector3 velocity;
     bool isGrounded;
@@ -31,13 +31,12 @@ public class playerScript : MonoBehaviour
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     void Update()
     {
-        axe.rotation = cam.rotation;
-        axe.Rotate(new Vector3(90f, 90f, 90f));
+        currentAnimation = "Idle";
 
         //jump
         isGrounded = Physics.CheckBox(groundCheck.transform.position, groundCheck.GetComponent<BoxCollider>().size/2, new Quaternion(), groundMask);
@@ -45,9 +44,10 @@ public class playerScript : MonoBehaviour
         {
             velocity.y = -2f;
         }
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetButton("Jump") && isGrounded && animator.GetCurrentAnimatorClipInfo(0)[0].clip.name != "Jump")
         {
             velocity.y = jumpForce;
+            currentAnimation = "Jump";
         }
         //gravity
         velocity.y += gravity * Time.deltaTime;
@@ -63,14 +63,28 @@ public class playerScript : MonoBehaviour
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
-
+            
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+
+            if (currentAnimation == "Jump")
+                currentAnimation = "Jump";
+            else if (speed == runSpeed)
+                currentAnimation = "Run";
+            else if (speed == walkSpeed)
+                currentAnimation = "Walk";
+
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
         }
+        print(animator.GetCurrentAnimatorClipInfo(0)[0].clip.name);
+        AnimationController(currentAnimation);
+
+
     }
 
     private void AnimationController(string animation)
     {
+        animator.ResetTrigger(previousAnimation);
         animator.SetTrigger(animation);
+        previousAnimation = animation;
     }
 }
