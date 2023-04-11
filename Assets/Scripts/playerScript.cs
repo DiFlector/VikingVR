@@ -18,9 +18,12 @@ public class playerScript : MonoBehaviour
     public float jumpForce = 3f;
     public string currentAnimation;
     private string previousAnimation;
+    private string animationType;
 
     Vector3 velocity;
     bool isGrounded;
+    bool jumpIsDone = true;
+    bool jumpIsDoneCheck = false;
     public Transform groundCheck;
     public float groundDistance = 0.01f;
     public LayerMask groundMask;
@@ -28,34 +31,59 @@ public class playerScript : MonoBehaviour
     float turnSmoothVelocity;
     public float turnSmoothTime = 0.1f;
 
+    public int health = 1;
+    public int defence = 1;
+    public bool alive = true;
+    public int damageTaken = 0;
+
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
         animator = GetComponentInChildren<Animator>();
     }
 
-    void Update()
+    async void Update()
     {
-        currentAnimation = "Idle";
+        var animName = animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
 
+        if (isGrounded == false)
+        {
+            currentAnimation = "Fall";
+            animationType = "Bool";
+        }
+        else
+        {
+            currentAnimation = "Idle";
+        }
+        animationType = "Trigger";
+        float horizontal = 0f;
+        float vertical = 0f;
         //jump
-        isGrounded = Physics.CheckBox(groundCheck.transform.position, groundCheck.GetComponent<BoxCollider>().size/2, new Quaternion(), groundMask);
+        isGrounded = Physics.CheckBox(groundCheck.transform.position, groundCheck.GetComponent<BoxCollider>().size / 2, new Quaternion(), groundMask);
         if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
         }
-        if (Input.GetButton("Jump") && isGrounded && animator.GetCurrentAnimatorClipInfo(0)[0].clip.name != "Jump")
+        if (Input.GetButton("Jump") && isGrounded && alive && jumpIsDone)
         {
             velocity.y = jumpForce;
             currentAnimation = "Jump";
+            jumpIsDone = false;
+            StartCoroutine(jumpIsDoneTimer());
+
         }
+
+
         //gravity
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
         //walk
         speed = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
+        if (alive)
+        {
+            horizontal = Input.GetAxisRaw("Horizontal");
+            vertical = Input.GetAxisRaw("Vertical");
+        }
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
         if (direction.magnitude >= 0.1f)
@@ -63,7 +91,7 @@ public class playerScript : MonoBehaviour
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
-            
+
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
             if (currentAnimation == "Jump")
@@ -75,16 +103,48 @@ public class playerScript : MonoBehaviour
 
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
         }
-        print(animator.GetCurrentAnimatorClipInfo(0)[0].clip.name);
-        AnimationController(currentAnimation);
 
+        if (Input.GetKeyDown(KeyCode.F))
+            getHit(10);
 
+        if (health <= 0 && alive)
+            death();
+
+        if (alive)
+            AnimationController(currentAnimation, animationType);
     }
 
-    private void AnimationController(string animation)
+     void AnimationController(string animation, string type)
     {
+        animator.SetBool(previousAnimation, false);
         animator.ResetTrigger(previousAnimation);
-        animator.SetTrigger(animation);
+
+        if (type == "Trigger")
+            animator.SetTrigger(animation);
+        else if (type == "Bool")
+            animator.SetBool(animation, true);
+
         previousAnimation = animation;
+    }
+
+    private void getHit(int damage)
+    {
+        if (damage > 0)
+            currentAnimation = "GetHit";
+        health -= damage;
+    }
+
+    private void death()
+    {
+        alive = false;
+        currentAnimation = "Death";
+        animationType = "Trigger";
+        AnimationController(currentAnimation, animationType);
+    }
+
+    IEnumerator jumpIsDoneTimer()
+    {
+        yield return new WaitForSeconds(2f);
+        jumpIsDone = true;
     }
 }
