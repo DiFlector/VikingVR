@@ -8,14 +8,15 @@ public class WeaponObject : MonoBehaviour
 {
     public string type;
     public float damageMultiplier;
-    public float damage;
-    public Vector3 velocity;
-    public GameObject blade;
-    public Vector3 pos1;
-    public Vector3 pos2;
+    private float damage;
+    private Vector3 velocity;
+    [SerializeField]
+    private GameObject blade;
+    private Vector3 pos1;
+    private Vector3 pos2;
     public bool enemyHit;
     public DummyHit enemy;
-    public List<Collider> collisionList = new List<Collider>();
+    private List<Collider> collisionList = new List<Collider>();
     public Vector3 getVelocity(Vector3 pos1, Vector3 pos2, float time)
     {
         return (pos2 - pos1)/time;
