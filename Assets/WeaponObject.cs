@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class WeaponObject : MonoBehaviour
@@ -12,18 +13,9 @@ public class WeaponObject : MonoBehaviour
     public GameObject blade;
     public Vector3 pos1;
     public Vector3 pos2;
-    public bool enemyHit = false;
-    public Vector3 enemyVelocity = new Vector3(0, 0, 0);
-    public WeaponObject(string type, float damageMultiplier, Vector3 velocity, GameObject blade = null)
-    {
-        this.type = type;
-        this.damageMultiplier = damageMultiplier;
-        this.damage = 0;
-        this.velocity = new Vector3(0, 0, 0);
-        if (blade != null ) { this.blade = new GameObject(); }
-        this.pos1 = blade.transform.position;
-        this.pos2 = blade.transform.position;
-    }
+    public bool enemyHit;
+    public DummyHit enemy;
+    public List<Collider> collisionList = new List<Collider>();
     public Vector3 getVelocity(Vector3 pos1, Vector3 pos2, float time)
     {
         return (pos2 - pos1)/time;
@@ -33,7 +25,34 @@ public class WeaponObject : MonoBehaviour
         Vector3 absVelocity = weaponVelocity - enemyVelocity;
         return absVelocity.magnitude;
     }
-    public float getDamage(string type, float damageMultiplier, float hitVelocity)
+    public float getMultiplier(List<Collider> collisionList, List<Collider> enemyColliders, List<float> multipliers)
+    {
+        float res = -1;
+        float m = multipliers[0];
+        for (int i = 0; i < enemyColliders.Count; i++)
+        {
+            if (collisionList.Contains(enemyColliders[i]))
+            {
+                if (multipliers[i] > res)
+                {
+                    res = multipliers[i];
+                }
+            }
+            if (multipliers[i] < m)
+            {
+                m = multipliers[i];
+            }
+        }
+        if (res == -1)
+        {
+            return m;
+        }
+        else
+        {
+            return res;
+        }
+    }
+    public float getDamage(string type, float damageMultiplier, float hitVelocity, float enemyMultiplier)
     {
         float dmg = 1;
         switch (type)
@@ -76,7 +95,7 @@ public class WeaponObject : MonoBehaviour
                 dmg = 0;
                 break;
         }
-        return dmg;
+        return dmg * enemyMultiplier;
     }
     private void Update()
     {
@@ -86,5 +105,19 @@ public class WeaponObject : MonoBehaviour
             pos2 = blade.transform.position;
         }
         velocity = getVelocity(pos1, pos2, Time.deltaTime);
+        if (enemyHit)
+        {
+            float damage = getDamage(type, damageMultiplier, getHitVelocity(velocity, enemy.velocity), getMultiplier(collisionList, enemy.colliders, enemy.damageList));
+            enemy.hp -= (int)Mathf.Ceil(damage);
+            enemyHit = false;
+        }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        collisionList.Add(collision.collider);
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        collisionList.Remove(collision.collider);
     }
 }

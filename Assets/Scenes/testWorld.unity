@@ -1421,6 +1421,8 @@ GameObject:
   - component: {fileID: 223389179}
   - component: {fileID: 223389178}
   - component: {fileID: 223389181}
+  - component: {fileID: 223389182}
+  - component: {fileID: 223389183}
   m_Layer: 13
   m_Name: Stick
   m_TagString: Untagged
@@ -1511,6 +1513,42 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!64 &223389182
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223389174}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 1e7ab3302be4c59499bd1659ccd73b35, type: 3}
+--- !u!114 &223389183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223389174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a792e0e39166a845ab63a22f6b05070, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: bladeWeapon
+  damageMultiplier: 1
+  damage: 0
+  velocity: {x: 0, y: 0, z: 0}
+  blade: {fileID: 1071293985}
+  pos1: {x: 0, y: 0, z: 0}
+  pos2: {x: 0, y: 0, z: 0}
+  enemyHit: 0
+  enemy: {fileID: 0}
+  collisionList: []
 --- !u!1 &230337648
 GameObject:
   m_ObjectHideFlags: 0
@@ -6575,9 +6613,8 @@ GameObject:
   - component: {fileID: 1071293986}
   - component: {fileID: 1071293988}
   - component: {fileID: 1071293987}
-  - component: {fileID: 1071293989}
   m_Layer: 0
-  m_Name: Blade
+  m_Name: BladeOfTheAxe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6624,27 +6661,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.04, z: 0.45}
   m_Center: {x: 0.25, y: 0, z: 0}
---- !u!114 &1071293989
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1071293985}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a792e0e39166a845ab63a22f6b05070, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: bladeWeapon
-  damageMultiplier: 0
-  damage: 0
-  velocity: {x: 0, y: 0, z: 0}
-  blade: {fileID: 1071293985}
-  pos1: {x: 0, y: 0, z: 0}
-  pos2: {x: 0, y: 0, z: 0}
-  enemyHit: 0
-  enemyVelocity: {x: 0, y: 0, z: 0}
 --- !u!1 &1088241273
 GameObject:
   m_ObjectHideFlags: 0
@@ -7040,7 +7056,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1186875730}
-  - component: {fileID: 1186875731}
   m_Layer: 0
   m_Name: RealDummy
   m_TagString: Untagged
@@ -7065,22 +7080,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1186875731
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1186875729}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1378175e82059a541a2c6b652bdc121a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colliders:
-  - {fileID: 1880994120}
-  - {fileID: 1515204425}
-  - {fileID: 324586376}
 --- !u!1 &1222883654
 GameObject:
   m_ObjectHideFlags: 0
@@ -7576,11 +7575,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 271991792102649672, guid: fecb771cbad073e499d1fddd86447fe8, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000021300677
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 271991792102649672, guid: fecb771cbad073e499d1fddd86447fe8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000011764354
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 271991792923786785, guid: fecb771cbad073e499d1fddd86447fe8, type: 3}
       propertyPath: m_IsActive
@@ -7636,11 +7635,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 271991793395009824, guid: fecb771cbad073e499d1fddd86447fe8, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000015210675
+      value: -0.000000015210677
       objectReference: {fileID: 0}
     - target: {fileID: 271991793395009824, guid: fecb771cbad073e499d1fddd86447fe8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000008043311
+      value: 0.000000008043312
       objectReference: {fileID: 0}
     - target: {fileID: 271991793414789708, guid: fecb771cbad073e499d1fddd86447fe8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7664,11 +7663,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 271991793414789708, guid: fecb771cbad073e499d1fddd86447fe8, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000015354097
+      value: -0.000000015354088
       objectReference: {fileID: 0}
     - target: {fileID: 271991793414789708, guid: fecb771cbad073e499d1fddd86447fe8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000007766047
+      value: 0.000000007766044
       objectReference: {fileID: 0}
     - target: {fileID: 271991793575530312, guid: fecb771cbad073e499d1fddd86447fe8, type: 3}
       propertyPath: axe
@@ -8151,6 +8150,7 @@ GameObject:
   - component: {fileID: 1430611675}
   - component: {fileID: 1430611679}
   - component: {fileID: 1430611680}
+  - component: {fileID: 1430611681}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -8267,6 +8267,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   com: {x: 0, y: 0, z: 0}
   rb: {fileID: 1430611679}
+--- !u!114 &1430611681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430611674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1378175e82059a541a2c6b652bdc121a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colliders:
+  - {fileID: 342352583}
+  - {fileID: 1515204425}
+  - {fileID: 324586376}
+  damageList:
+  - 1
+  - 2
+  - 0.5
+  velocity: {x: 0, y: 0, z: 0}
+  centerObject: {fileID: 1515204424}
+  hp: 100
 --- !u!1 &1482150401
 GameObject:
   m_ObjectHideFlags: 0
@@ -8406,7 +8429,6 @@ GameObject:
   - component: {fileID: 1515204427}
   - component: {fileID: 1515204426}
   - component: {fileID: 1515204425}
-  - component: {fileID: 1515204429}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -8422,7 +8444,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1515204424}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -8492,19 +8514,6 @@ Transform:
   m_Father: {fileID: 1880994123}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1515204429
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1515204424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6831506068301843a2a310c739e24f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transform: {fileID: 1515204428}
 --- !u!1 &1535258417
 GameObject:
   m_ObjectHideFlags: 0
@@ -10027,7 +10036,6 @@ GameObject:
   - component: {fileID: 1880994123}
   - component: {fileID: 1880994122}
   - component: {fileID: 1880994121}
-  - component: {fileID: 1880994120}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -10035,20 +10043,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!136 &1880994120
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1880994119}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1880994121
 MeshRenderer:
   m_ObjectHideFlags: 0
