@@ -37,7 +37,7 @@ public class playerScript : MonoBehaviour
     void Update()
     {
         axe.rotation = cam.rotation;
-        axe.Rotate(new Vector3(90f, 90f, 90f));
+        //axe.Rotate(new Vector3(90f, 90f, 90f));
 
         //jump
         isGrounded = Physics.CheckBox(groundCheck.transform.position, groundCheck.GetComponent<BoxCollider>().size/2, new Quaternion(), groundMask);
