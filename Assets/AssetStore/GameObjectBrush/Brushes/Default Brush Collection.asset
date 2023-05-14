@@ -12,111 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77dee27d70c5da5478ac4fbd771b4410, type: 3}
   m_Name: Default Brush Collection
   m_EditorClassIdentifier: 
-  _brushes:
-  - brushObject: {fileID: 1612273161005096, guid: ae9772ea62bbc724eb9b8ef81109f733, type: 3}
-    usePrefabs: 1
-    allowIntercollision: 0
-    alignToSurface: 0
-    randomizeXRotation: 0
-    randomizeYRotation: 1
-    randomizeZRotation: 0
-    parentContainer: {fileID: 0}
-    density: 2
-    brushSize: 16
-    minScale: 0.5
-    maxScale: 1.5
-    offsetFromPivot: {x: 0, y: -0.2, z: 0}
-    rotOffsetFromPivot: {x: 0, y: 0, z: 0}
-    minSlope: 0
-    maxSlope: 360
-    layerFilter:
-      serializedVersion: 2
-      m_Bits: 4294967295
-    isTagFilteringEnabled: 1
-    tagFilter: Terrain
-  - brushObject: {fileID: 1458573784885960, guid: 6910e2407cd484a42a0c2598114751a0, type: 3}
-    usePrefabs: 1
-    allowIntercollision: 0
-    alignToSurface: 0
-    randomizeXRotation: 0
-    randomizeYRotation: 1
-    randomizeZRotation: 0
-    parentContainer: {fileID: 0}
-    density: 1
-    brushSize: 15
-    minScale: 0.5
-    maxScale: 1.5
-    offsetFromPivot: {x: 0, y: -0.2, z: 0}
-    rotOffsetFromPivot: {x: 0, y: 0, z: 0}
-    minSlope: 0
-    maxSlope: 360
-    layerFilter:
-      serializedVersion: 2
-      m_Bits: 4294967295
-    isTagFilteringEnabled: 1
-    tagFilter: Terrain
-  - brushObject: {fileID: 1369031296425274, guid: 22a3fd8d3e59a1149bdcd775c0e87241, type: 3}
-    usePrefabs: 1
-    allowIntercollision: 0
-    alignToSurface: 0
-    randomizeXRotation: 0
-    randomizeYRotation: 1
-    randomizeZRotation: 0
-    parentContainer: {fileID: 0}
-    density: 3
-    brushSize: 20
-    minScale: 0.5
-    maxScale: 1.5
-    offsetFromPivot: {x: 0, y: -0.2, z: 0}
-    rotOffsetFromPivot: {x: 0, y: 0, z: 0}
-    minSlope: 0
-    maxSlope: 360
-    layerFilter:
-      serializedVersion: 2
-      m_Bits: 4294967295
-    isTagFilteringEnabled: 1
-    tagFilter: Terrain
+  _brushes: []
   primarySelectedBrush:
-    brushObject: {fileID: 1612273161005096, guid: ae9772ea62bbc724eb9b8ef81109f733, type: 3}
-    usePrefabs: 1
+    brushObject: {fileID: 0}
+    usePrefabs: 0
     allowIntercollision: 0
     alignToSurface: 0
     randomizeXRotation: 0
-    randomizeYRotation: 1
+    randomizeYRotation: 0
     randomizeZRotation: 0
     parentContainer: {fileID: 0}
-    density: 2
-    brushSize: 16
-    minScale: 0.5
-    maxScale: 1.5
-    offsetFromPivot: {x: 0, y: -0.2, z: 0}
+    density: 0
+    brushSize: 0
+    minScale: 0
+    maxScale: 0
+    offsetFromPivot: {x: 0, y: 0, z: 0}
     rotOffsetFromPivot: {x: 0, y: 0, z: 0}
     minSlope: 0
-    maxSlope: 360
+    maxSlope: 0
     layerFilter:
       serializedVersion: 2
-      m_Bits: 4294967295
-    isTagFilteringEnabled: 1
-    tagFilter: Terrain
-  selectedBrushes:
-  - brushObject: {fileID: 1612273161005096, guid: ae9772ea62bbc724eb9b8ef81109f733, type: 3}
-    usePrefabs: 1
-    allowIntercollision: 0
-    alignToSurface: 0
-    randomizeXRotation: 0
-    randomizeYRotation: 1
-    randomizeZRotation: 0
-    parentContainer: {fileID: 0}
-    density: 2
-    brushSize: 16
-    minScale: 0.5
-    maxScale: 1.5
-    offsetFromPivot: {x: 0, y: -0.2, z: 0}
-    rotOffsetFromPivot: {x: 0, y: 0, z: 0}
-    minSlope: 0
-    maxSlope: 360
-    layerFilter:
-      serializedVersion: 2
-      m_Bits: 4294967295
-    isTagFilteringEnabled: 1
-    tagFilter: Terrain
+      m_Bits: 0
+    isTagFilteringEnabled: 0
+    tagFilter: 
+  selectedBrushes: []
