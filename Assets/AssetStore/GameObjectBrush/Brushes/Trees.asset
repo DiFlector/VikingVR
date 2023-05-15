@@ -77,7 +77,7 @@ MonoBehaviour:
     isTagFilteringEnabled: 1
     tagFilter: Terrain
   primarySelectedBrush:
-    brushObject: {fileID: 1458573784885960, guid: 6910e2407cd484a42a0c2598114751a0, type: 3}
+    brushObject: {fileID: 1369031296425274, guid: 22a3fd8d3e59a1149bdcd775c0e87241, type: 3}
     usePrefabs: 1
     allowIntercollision: 0
     alignToSurface: 0
@@ -85,7 +85,7 @@ MonoBehaviour:
     randomizeYRotation: 1
     randomizeZRotation: 0
     parentContainer: {fileID: 0}
-    density: 2
+    density: 3
     brushSize: 25
     minScale: 0.5
     maxScale: 1.5
@@ -99,7 +99,7 @@ MonoBehaviour:
     isTagFilteringEnabled: 1
     tagFilter: Terrain
   selectedBrushes:
-  - brushObject: {fileID: 1458573784885960, guid: 6910e2407cd484a42a0c2598114751a0, type: 3}
+  - brushObject: {fileID: 1369031296425274, guid: 22a3fd8d3e59a1149bdcd775c0e87241, type: 3}
     usePrefabs: 1
     allowIntercollision: 0
     alignToSurface: 0
@@ -107,7 +107,7 @@ MonoBehaviour:
     randomizeYRotation: 1
     randomizeZRotation: 0
     parentContainer: {fileID: 0}
-    density: 2
+    density: 3
     brushSize: 25
     minScale: 0.5
     maxScale: 1.5
