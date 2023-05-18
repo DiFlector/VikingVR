@@ -23,9 +23,9 @@ MonoBehaviour:
     parentContainer: {fileID: 0}
     density: 2
     brushSize: 25
-    minScale: 0.5
-    maxScale: 1.5
-    offsetFromPivot: {x: 0, y: 0, z: 0}
+    minScale: 0.7
+    maxScale: 2
+    offsetFromPivot: {x: 0, y: -0.4, z: 0}
     rotOffsetFromPivot: {x: 0, y: 0, z: 0}
     minSlope: 0
     maxSlope: 360
@@ -42,11 +42,11 @@ MonoBehaviour:
     randomizeYRotation: 1
     randomizeZRotation: 0
     parentContainer: {fileID: 0}
-    density: 2
+    density: 1
     brushSize: 25
-    minScale: 0.5
-    maxScale: 1.5
-    offsetFromPivot: {x: 0, y: 0, z: 0}
+    minScale: 0.7
+    maxScale: 2
+    offsetFromPivot: {x: 0, y: -0.4, z: 0}
     rotOffsetFromPivot: {x: 0, y: 0, z: 0}
     minSlope: 0
     maxSlope: 360
@@ -65,9 +65,9 @@ MonoBehaviour:
     parentContainer: {fileID: 0}
     density: 3
     brushSize: 25
-    minScale: 0.5
-    maxScale: 1.5
-    offsetFromPivot: {x: 0, y: 0, z: 0}
+    minScale: 0.7
+    maxScale: 2
+    offsetFromPivot: {x: 0, y: -0.4, z: 0}
     rotOffsetFromPivot: {x: 0, y: 0, z: 0}
     minSlope: 0
     maxSlope: 360
@@ -87,9 +87,9 @@ MonoBehaviour:
     parentContainer: {fileID: 0}
     density: 3
     brushSize: 25
-    minScale: 0.5
-    maxScale: 1.5
-    offsetFromPivot: {x: 0, y: 0, z: 0}
+    minScale: 0.7
+    maxScale: 2
+    offsetFromPivot: {x: 0, y: -0.4, z: 0}
     rotOffsetFromPivot: {x: 0, y: 0, z: 0}
     minSlope: 0
     maxSlope: 360
@@ -109,9 +109,9 @@ MonoBehaviour:
     parentContainer: {fileID: 0}
     density: 3
     brushSize: 25
-    minScale: 0.5
-    maxScale: 1.5
-    offsetFromPivot: {x: 0, y: 0, z: 0}
+    minScale: 0.7
+    maxScale: 2
+    offsetFromPivot: {x: 0, y: -0.4, z: 0}
     rotOffsetFromPivot: {x: 0, y: 0, z: 0}
     minSlope: 0
     maxSlope: 360

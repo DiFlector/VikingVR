@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6108456270139829689}
   - component: {fileID: 6602726987143076693}
   - component: {fileID: 3593665298747084240}
+  - component: {fileID: -6520002175805354790}
   m_Layer: 0
   m_Name: gold_mine_banner
   m_TagString: Untagged
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &-6520002175805354790
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1186985873613088256}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7580417271910979309, guid: 0344f6cb1bc28ab4781e95f3fa83dcbc, type: 3}
