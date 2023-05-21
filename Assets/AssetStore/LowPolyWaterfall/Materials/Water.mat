@@ -8,10 +8,10 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Water
-  m_Shader: {fileID: 4800000, guid: c5617dffeb9944fa3a50334e9f9f8c5e, type: 3}
-  m_ValidKeywords: []
-  m_InvalidKeywords:
-  - _ALPHAPREMULTIPLY_ON
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ValidKeywords:
+  - _EMISSION
+  m_InvalidKeywords: []
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
@@ -98,7 +98,7 @@ Material:
     - _DistortionPower: 4
     - _DistortionStrength: 1
     - _DistortionStrengthScaled: 0
-    - _DstBlend: 10
+    - _DstBlend: 0
     - _EmissionEnabled: 0
     - _FlipbookMode: 0
     - _FoamDepth: 0
@@ -113,7 +113,7 @@ Material:
     - _LightingEnabled: 1
     - _MaxTreshold: 0.5
     - _Metallic: 0
-    - _Mode: 3
+    - _Mode: 0
     - _NormalScale: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
@@ -137,7 +137,7 @@ Material:
     - _WavesAmount: 8.87
     - _WavesAmplitude: 0.01
     - _WavesDensity: 10
-    - _ZWrite: 0
+    - _ZWrite: 1
     - __dirty: 1
     - _isInnerAlphaBlendOrColor: 0
     m_Colors:
@@ -147,7 +147,7 @@ Material:
     - _BumpDirection: {r: 1, g: 1, b: -1, a: 1}
     - _BumpTiling: {r: 1, g: 1, b: -2, a: 3}
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
-    - _Color: {r: 1, g: 1, b: 1, a: 0.5019608}
+    - _Color: {r: 0, g: 0.8627451, b: 1, a: 1}
     - _ColorAddSubDiff: {r: 0, g: 0, b: 0, a: 0}
     - _DeepColor: {r: 0, g: 0.8627451, b: 1, a: 1}
     - _DistortParams: {r: 1, g: 1, b: 2, a: 1.15}
