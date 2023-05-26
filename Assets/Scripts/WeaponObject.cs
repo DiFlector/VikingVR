@@ -15,7 +15,7 @@ public class WeaponObject : MonoBehaviour
     private Vector3 pos1;
     private Vector3 pos2;
     public bool enemyHit;
-    public DummyHit enemy;
+    public enemyHit enemy;
     protected bool hitAllowed = true;
     private List<Collider> collisionList = new List<Collider>();
     public Vector3 getVelocity(Vector3 pos1, Vector3 pos2, float time)
@@ -119,6 +119,7 @@ public class WeaponObject : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         collisionList.Add(collision.collider);
+        collision.gameObject.TryGetComponent<enemyHit>(out enemy);
     }
     private void OnCollisionExit(Collision collision)
     {

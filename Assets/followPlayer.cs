@@ -1,21 +1,24 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections;
+using Unity.Jobs;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.XR.Interaction.Toolkit;
+using static Unity.VisualScripting.Member;
 
 public class followPlayer : MonoBehaviour
 {
-    public Transform position;
     public Transform visionPoint;
-    public GameObject model;
     public Transform target;
-    private int visionAngle = 90;
+    public int visionAngle = 359;
     private Vector3 direction;
     private Vector2 relativeAngle;
-    private float abs_relative_angle;
+    public float abs_relative_angle;
     public bool in_vision_field;
-    public XRRayInteractor interactor;
+    public bool visible;
 
     void Update()
     {
@@ -33,17 +36,49 @@ public class followPlayer : MonoBehaviour
         }
 
         abs_relative_angle = Mathf.Sqrt(Mathf.Pow(relativeAngle.x, 2) + Mathf.Pow(relativeAngle.y, 2));
-        in_vision_field = direction.magnitude < 100 && abs_relative_angle < visionAngle / 2;
 
-        /*
-        if (direction.magnitude < 100 && abs_relative_angle < visionAngle / 2)
+        in_vision_field = direction.magnitude < 100 && abs_relative_angle < visionAngle / 2;
+        visible = in_vision_field && rayVisibilityCheck(visionPoint.position, target.position, target.GetComponent<Collider>());
+
+        //print($"raycastcheck: {rayVisibilityCheck(visionPoint.position, target.position, target.GetComponent<Collider>())}");
+    }
+    protected bool rayVisibilityCheck(Vector3 sourcePos, Vector3 targetPos, Collider targetCollider)
+    {
+        Vector3 destinationVector = targetPos - sourcePos;
+        var results = new NativeArray<RaycastHit>(1, Allocator.TempJob);
+        var commands = new NativeArray<RaycastCommand>(1, Allocator.TempJob);
+
+        //commands[0] = new RaycastCommand(sourcePos, destinationVector.normalized, new QueryParameters(), 100f);
+        commands[0] = new RaycastCommand(sourcePos, destinationVector.normalized);
+
+        Debug.DrawRay(sourcePos, destinationVector);
+
+        // Schedule the batch of raycasts
+        //JobHandle handle = RaycastCommand.ScheduleBatch(commands, results, 1, default(JobHandle));
+        JobHandle handle = RaycastCommand.ScheduleBatch(commands, results, 1, default(JobHandle));
+
+        // Wait for the batch processing job to complete
+        handle.Complete();
+
+        // Copy the result. If batchedHit.collider is null there was no hit
+        RaycastHit batchedHit = results[0];
+
+        // Dispose the buffers
+        results.Dispose();
+        commands.Dispose();
+
+        bool ans = false;
+
+        //print($"collider ray hit: {batchedHit.collider}");
+
+        if (batchedHit.collider != null)
         {
-            print($"in vision field, {abs_relative_angle}");
+            if (batchedHit.collider.gameObject.TryGetComponent<Player>(out Player a))
+            {
+                ans = true;
+            }
         }
-        else
-        {
-            print($"not in vision field, {abs_relative_angle}");
-        }
-        */
+
+        return ans;
     }
 }

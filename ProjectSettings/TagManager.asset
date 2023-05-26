@@ -19,9 +19,9 @@ TagManager:
   - Interactable
   - groundCheck
   - World
-  - 
-  - 
-  - 
+  - Obstacles
+  - rayReceive
+  - rayCheck
   - 
   - 
   - 

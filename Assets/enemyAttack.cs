@@ -20,5 +20,6 @@ public class enemyAttack : MonoBehaviour
     public void attackPlayer()
     {
         //player.startAnimation(hit)
+        //print(7657654678);
     }
 }

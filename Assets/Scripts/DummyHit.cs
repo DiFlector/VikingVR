@@ -5,59 +5,11 @@ using Unity.VisualScripting;
 using UnityEngine;
 using VirtualGrasp;
 
-public class DummyHit : MonoBehaviour
+public class DummyHit : enemyHit
 {
-    public List<Collider> colliders;
-    public List<float> damageList;
-    private Vector3 pos1 = Vector3.zero;
-    private Vector3 pos2 = Vector3.zero;
-    public Vector3 velocity = Vector3.zero;
-    public GameObject centerObject;
-    public bool alive = true;
-    private int _hp = 100;
-    public int hp
+    private void enemyDie()
     {
-        get { return _hp; }
-        set
-        {
-            if (alive)
-            {
-                if (value <= 0)
-                {
-                    _hp = 0;
-                    alive = false;
-                    dummyDestroy();
-                }
-                else { _hp = value; }
-            }
-        }
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (alive)
-        {
-            WeaponObject obj = collision.collider.gameObject.GetComponentInParent<WeaponObject>();
-            if (obj != null)
-            {
-                obj.enemyHit = true;
-                obj.enemy = gameObject.GetComponent<DummyHit>();
-            }
-        }
-    }
-    private void Update()
-    {
-        if (alive)
-        {
-            pos1 = pos2;
-            if (centerObject != null)
-            {
-                pos2 = centerObject.transform.position;
-            }
-            velocity = (pos2 - pos1) / Time.deltaTime;
-        }
-    }
-    private void dummyDestroy()
-    {
+        print("destroying");
         GameObject obj = gameObject;
         Destroy(obj.transform.parent.parent.gameObject.transform.GetChild(2).gameObject);
         obj = obj.transform.GetChild(0).gameObject;
