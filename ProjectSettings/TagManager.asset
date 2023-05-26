@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Tree
   - Terrain
+  - FxTemporaire
+  - ButtonPicture
+  - UINameHolder
+  - Compass
   layers:
   - Default
   - TransparentFX
@@ -21,8 +25,8 @@ TagManager:
   - Interactable
   - groundCheck
   - World
-  - 
-  - 
+  - Inventory
+  - Item
   - 
   - 
   - 
