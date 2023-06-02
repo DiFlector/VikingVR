@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Tree
   - Terrain
+  - EnemyWeapon
   layers:
   - Default
   - TransparentFX
@@ -24,9 +25,9 @@ TagManager:
   - Obstacles
   - rayReceive
   - rayCheck
-  - 
-  - 
-  - 
+  - EnemyWeapon
+  - Enemy
+  - PlayerHp
   - 
   - 
   - 

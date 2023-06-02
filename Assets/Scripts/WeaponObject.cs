@@ -110,6 +110,9 @@ public class WeaponObject : MonoBehaviour
         velocity = getVelocity(pos1, pos2, Time.deltaTime);
         if (enemyHit && hitAllowed)
         {
+            //print(enemy.velocity);
+            print(enemy.colliders);
+            print(enemy.damageList);
             float damage = getDamage(type, damageMultiplier, getHitVelocity(velocity, enemy.velocity), getMultiplier(collisionList, enemy.colliders, enemy.damageList));
             enemy.hp -= (int)Mathf.Ceil(damage);
             enemyHit = false;

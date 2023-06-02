@@ -18,17 +18,14 @@ public class enemyHit : MonoBehaviour
         get { return _hp; }
         set
         {
-            print("in setter");
             if (alive)
             {
                 if (value <= 0)
                 {
                     
-                    print("dying");
                     _hp = 0;
                     alive = false;
                     gameObject.GetComponent<EnemyAI>().death();
-                    //enemyDie();
                 }
                 else { _hp = value; }
             }
@@ -36,11 +33,11 @@ public class enemyHit : MonoBehaviour
     }
     protected void OnCollisionEnter(Collision collision)
     {
-        //print("collision entered");
+        print("collision entered" + collision.gameObject);
         if (alive)
         {
             WeaponObject obj = collision.collider.gameObject.GetComponentInParent<WeaponObject>();
-            //print(obj);
+            print(obj);
             if (obj != null)
             {
                 obj.enemyHit = true;

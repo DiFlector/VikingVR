@@ -120,7 +120,6 @@ public class EnemyAI : MonoBehaviour
         }
         if (alive)
         {
-            print(alive);
             AnimationController(currentAnimation, animationType);
         }
         else
