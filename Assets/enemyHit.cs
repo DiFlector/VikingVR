@@ -12,7 +12,7 @@ public class enemyHit : MonoBehaviour
     public Vector3 velocity = Vector3.zero;
     public GameObject centerObject;
     public bool alive = true;
-    protected int _hp = 100;
+    protected int _hp = 20;
     public int hp
     {
         get { return _hp; }
@@ -23,10 +23,12 @@ public class enemyHit : MonoBehaviour
             {
                 if (value <= 0)
                 {
+                    
                     print("dying");
                     _hp = 0;
                     alive = false;
-                    enemyDie();
+                    gameObject.GetComponent<EnemyAI>().death();
+                    //enemyDie();
                 }
                 else { _hp = value; }
             }

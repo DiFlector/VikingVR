@@ -4,6 +4,7 @@ using UnityEngine;
 using Pathfinding;
 using UnityEngine.XR.Interaction.Toolkit;
 using Unity.VisualScripting;
+using Assets.SimpleLocalization;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -22,6 +23,12 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private enemyAttack enemyAttack;
     [SerializeField] private followPlayer followPlayer;
     [SerializeField] private AILerp ailerp;
+    [SerializeField] private Animator animator;
+    [SerializeField] private GameObject visionPoint;
+    private string previousAnimation;
+    private string animationType;
+    private string currentAnimation;
+    public bool alive;
 
     private GameObject target;
     private Transform lastSeenPos;
@@ -34,6 +41,7 @@ public class EnemyAI : MonoBehaviour
 
     void Start()
     {
+        alive = true;
         player = FindObjectOfType<Player>();
         currentState = enemyStates.roaming;
         roamPosition = generateRoamPosition();
@@ -43,11 +51,16 @@ public class EnemyAI : MonoBehaviour
 
     void Update()
     {
+        var animName = animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
+        currentAnimation = "Walk";
+        animationType = "Trigger";
+
         //print($"state: {currentState}, visible: {followPlayer.visible}, distnce: {Vector3.Distance(gameObject.transform.position, player.transform.position)}, following: {following}, remaining distance: {ailerp.remainingDistance}");
         currentState = tryFindTarget(currentState);
         switch (currentState)
         {
             case enemyStates.roaming:
+                currentAnimation = "Walk";
                 target.transform.position = roamPosition;
                 distance = Vector3.Distance(gameObject.transform.position, roamPosition);
                 if (distance <= reachedPointDistance)
@@ -57,6 +70,7 @@ public class EnemyAI : MonoBehaviour
                 destinationSetter.target = target.transform;
                 break;
             case enemyStates.following:
+                currentAnimation = "Run";
                 if (followPlayer.visible)
                 {
                     target.transform.position = player.transform.position;
@@ -65,15 +79,18 @@ public class EnemyAI : MonoBehaviour
                 //print($"{distance}, {enemyAttack.attackRange}, {followPlayer.abs_relative_angle}");
                 if (distance < enemyAttack.attackRange)
                 {
+                    currentAnimation = "Attack";
                     enemyAttack.attackPlayer();
                 }
                 if (distance < reachedPointDistance || ailerp.remainingDistance <= reachedPointDistance)
                 {
+                    animator.ResetTrigger("Attack");
                     ailerp.speed = 0.01f;
                     following = false;
                 }
                 else
                 {
+                    animator.ResetTrigger("Attack");
                     ailerp.speed = speed;
                     following = true;
                 }
@@ -81,22 +98,33 @@ public class EnemyAI : MonoBehaviour
                 lastSeenPos = target.transform;
                 break;
             case enemyStates.searching:
+                currentAnimation = "Search";
                 //print("searching");
                 //print($"ubivat ubivat ubivat, {Time.unscaledTime - timer}");
                 if (Time.unscaledTime - timer > offsetTime)
                 {
                     if (Time.unscaledTime - timer < searchTime + offsetTime)
                     {
-                        gameObject.transform.rotation = Quaternion.Euler(0f, ((Time.unscaledTime - timer - offsetTime) % searchPeriod) / searchPeriod * 360 * Mathf.Pow((-1), ((int)((Time.unscaledTime - timer - offsetTime) / searchPeriod) % 2)), 0f);
+                        visionPoint.transform.rotation = Quaternion.Euler(0f, ((Time.unscaledTime - timer - offsetTime) % searchPeriod) / searchPeriod * 360 * Mathf.Pow((-1), ((int)((Time.unscaledTime - timer - offsetTime) / searchPeriod) % 2)), 0f);
                         //print((Time.unscaledTime - timer - offsetTime) % searchPeriod / searchPeriod);
                     }
                     else
                     {
+                        visionPoint.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
                         currentState = enemyStates.roaming;
                     }
                 }
                 break;
+
+                
         }
+        if (alive)
+        {
+            print(alive);
+            AnimationController(currentAnimation, animationType);
+        }
+        else
+            speed = 0f;
     }
 
     private enemyStates tryFindTarget(enemyStates state)
@@ -138,6 +166,22 @@ public class EnemyAI : MonoBehaviour
     {
         var randomDistance = Random.Range(minDistance, maxDistance);
         return randomDistance;
+    }
+
+    public void death()
+    {
+        speed = 0f;
+        alive = false;
+        currentAnimation = "Death";
+        animationType = "Trigger";
+        AnimationController(currentAnimation, animationType);
+    }
+
+    void AnimationController(string animation, string type)
+    {
+        animator.ResetTrigger(previousAnimation);
+        animator.SetTrigger(animation);
+        previousAnimation = animation;
     }
 }
 

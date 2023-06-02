@@ -18,6 +18,7 @@ public class WeaponObject : MonoBehaviour
     public enemyHit enemy;
     protected bool hitAllowed = true;
     private List<Collider> collisionList = new List<Collider>();
+
     public Vector3 getVelocity(Vector3 pos1, Vector3 pos2, float time)
     {
         return (pos2 - pos1)/time;
