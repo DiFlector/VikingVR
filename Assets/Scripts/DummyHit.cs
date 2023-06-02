@@ -3,43 +3,44 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using VirtualGrasp;
 
-public class DummyHit : MonoBehaviour
+public class DummyHit : enemyHit
 {
-    public List<Collider> colliders;
-    public List<float> damageList;
-    private Vector3 pos1 = Vector3.zero;
-    private Vector3 pos2 = Vector3.zero;
-    public Vector3 velocity = Vector3.zero;
-    public GameObject centerObject;
-    protected bool hitAllowed = true;
-    public int hp = 0;
-    private void OnCollisionEnter(Collision collision)
+    private void enemyDie()
     {
-        WeaponObject obj = collision.collider.gameObject.GetComponentInParent<WeaponObject>();
-        if (obj != null)
+        print("destroying");
+        GameObject obj = gameObject;
+        Destroy(obj.transform.parent.parent.gameObject.transform.GetChild(2).gameObject);
+        obj = obj.transform.GetChild(0).gameObject;
+        foreach (Collider col in obj.GetComponents<Collider>())
         {
-            if (hitAllowed)
-            {
-                obj.enemyHit = true;
-                obj.enemy = gameObject.GetComponent<DummyHit>();
-                hitAllowed = false;
-                StartCoroutine(attackTimer(2f));
-            }
+            col.enabled = false;
         }
-    }
-    private void Update()
-    {
-        pos1 = pos2;
-        if (centerObject != null)
-        {
-            pos2 = centerObject.transform.position;
-        }
-        velocity = (pos2 - pos1)/Time.deltaTime;
-    }
-    IEnumerator attackTimer(float time)
-    {
-        yield return new WaitForSeconds(time);
-        hitAllowed = true; 
+        obj = obj.transform.GetChild(0).GetChild(0).gameObject;
+        obj.AddComponent<SphereCollider>();
+        obj.AddComponent<Rigidbody>();
+        obj.transform.position += new Vector3(0.001f, 0.004f, 0.001f);
+        obj = obj.transform.parent.gameObject;
+        obj.AddComponent<CapsuleCollider>();
+        obj.AddComponent<Rigidbody>();
+        obj.transform.position += new Vector3(-0.001f, 0.003f, -0.001f);
+        obj = obj.transform.parent.parent.gameObject;
+        obj.GetComponent<Rigidbody>().useGravity = true;
+        obj.GetComponent<Rigidbody>().freezeRotation = false;
+        obj.GetComponent<Rigidbody>().constraints = new RigidbodyConstraints();
+        obj.transform.position += new Vector3(0.001f, 0.002f, 0.001f);
+        obj = obj.transform.parent.GetChild(1).gameObject;
+        obj.GetComponent<Rigidbody>().useGravity = true;
+        obj.GetComponent<Rigidbody>().freezeRotation = false;
+        obj.GetComponent<Rigidbody>().constraints = new RigidbodyConstraints();
+        obj.transform.position += new Vector3(0.001f, 0.001f, 0.001f);
+        obj.transform.rotation = new Quaternion(0.001f, 0.001f, 0.001f, 0.001f);
+        obj = obj.transform.parent.parent.GetChild(0).gameObject;
+        obj.GetComponent<Rigidbody>().useGravity = true;
+        obj.GetComponent<Rigidbody>().isKinematic = false;
+        obj.GetComponent<Rigidbody>().freezeRotation = false;
+        obj.GetComponent<Rigidbody>().constraints = new RigidbodyConstraints();
+        obj.transform.position += new Vector3(0.001f, 0.001f, 0.001f);
     }
 }
