@@ -12,7 +12,7 @@ public class enemyHit : MonoBehaviour
     public Vector3 velocity = Vector3.zero;
     public GameObject centerObject;
     public bool alive = true;
-    protected int _hp = 20;
+    protected int _hp = 100;
     public int hp
     {
         get { return _hp; }
