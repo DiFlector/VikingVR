@@ -7,6 +7,7 @@ TagManager:
   - Tree
   - Terrain
   - EnemyWeapon
+  - FxTemporaire
   layers:
   - Default
   - TransparentFX
@@ -28,7 +29,7 @@ TagManager:
   - EnemyWeapon
   - Enemy
   - PlayerHp
-  - 
+  - Chest
   - 
   - 
   - 

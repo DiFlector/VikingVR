@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Consumer : MonoBehaviour
 {
-
+    /*
     GameObject[] portions;
     int currentIndex;
     float lastChange;
@@ -42,5 +42,5 @@ public class Consumer : MonoBehaviour
             return;
         portions[currentIndex].SetActive(true);
     }
-
+    */
 }
