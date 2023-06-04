@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     public int score;
     public string scene;
     public int hp;
-    public int defaultHp;
+    public int maxHp;
     public GameObject DeathPoint;
     public GameObject Grave;
     public GameObject XROrigin;
@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     {
         score = 0;
         hp = gameObject.transform.parent.GetComponentInChildren<enemyHit>().hp;
+        maxHp = gameObject.transform.parent.GetComponentInChildren<enemyHit>().maxHp;
     }
 
     private void Update()
@@ -42,7 +43,7 @@ public class Player : MonoBehaviour
     {
         Grave.gameObject.SetActive(true);
         ScoreTm.text = score.ToString();
-        gameObject.transform.parent.GetComponentInChildren<enemyHit>().hp = defaultHp;
+        gameObject.transform.parent.GetComponentInChildren<enemyHit>().hp = maxHp;
         XROrigin.GetComponent<Transform>().position = DeathPoint.transform.position;
     }
 }

@@ -13,38 +13,39 @@ public class enemyHit : MonoBehaviour
     public Vector3 velocity = Vector3.zero;
     public GameObject centerObject;
     public bool alive = true;
-    protected int _hp = 20;
+    public int maxHp;
+    protected int _hp = 100;
     public int hp
     {
         get { return _hp; }
         set
         {
-            print("in setter");
+            //print("in setter");
             if (alive)
             {
                 if (value <= 0)
                 {
                     
-                    print("dying");
+                    //print("dying");
                     _hp = 0;
                     alive = false;
                     gameObject.GetComponent<EnemyAI>().death();
                     //enemyDie();
                 }
-                else if (value >= 100)
+                else if (value >= maxHp)
                 {
-                    _hp = 100;
+                    _hp = maxHp;
                 }
                 else { _hp = value; }
             }
         }
     }
+    private void Start()
+    {
+        hp = maxHp;
+    }
     protected void OnCollisionEnter(Collision collision)
     {
-        if (gameObject.transform.parent.gameObject.TryGetComponent<Player>(out Player player))
-        {
-            print("call");
-        }
         //print("collision entered");
         if (alive)
         {

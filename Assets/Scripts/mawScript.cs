@@ -4,27 +4,13 @@ using UnityEngine;
 
 public class mawScript : MonoBehaviour
 {
-    public int hp;
-    int maxhp = 110;
-    void Start()
-    {
-        hp = 50;
-    }
-    
+    public enemyHit eh;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Food"))
         {
-            if (hp + 20 <= maxhp)
-            {
-                hp += 20;
-                Destroy(other.gameObject);
-            }
+            eh.hp = eh.hp + 20;
+            Destroy(other.gameObject);
         }
-    }
-    
-    void Update()
-    {
-        
     }
 }
