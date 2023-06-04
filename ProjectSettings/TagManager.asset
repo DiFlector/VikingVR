@@ -22,9 +22,9 @@ TagManager:
   - Obstacles
   - rayReceive
   - rayCheck
-  - 
-  - 
-  - 
+  - Enemy
+  - EnemyWeapon
+  - hitMe
   - 
   - 
   - 

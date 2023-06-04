@@ -36,6 +36,10 @@ public class enemyHit : MonoBehaviour
     }
     protected void OnCollisionEnter(Collision collision)
     {
+        if (gameObject.transform.parent.gameObject.TryGetComponent<Player>(out Player player))
+        {
+            print("call");
+        }
         //print("collision entered");
         if (alive)
         {
@@ -59,6 +63,8 @@ public class enemyHit : MonoBehaviour
             }
             velocity = (pos2 - pos1) / Time.deltaTime;
         }
+
+        
     }
 
     protected void enemyDie()
