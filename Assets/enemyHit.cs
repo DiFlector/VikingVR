@@ -2,6 +2,7 @@ using Pathfinding;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class enemyHit : MonoBehaviour
 {
@@ -29,6 +30,10 @@ public class enemyHit : MonoBehaviour
                     alive = false;
                     gameObject.GetComponent<EnemyAI>().death();
                     //enemyDie();
+                }
+                else if (value >= 100)
+                {
+                    _hp = 100;
                 }
                 else { _hp = value; }
             }
