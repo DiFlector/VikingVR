@@ -49,7 +49,7 @@ public class followPlayer : MonoBehaviour
         var commands = new NativeArray<RaycastCommand>(1, Allocator.TempJob);
 
         //commands[0] = new RaycastCommand(sourcePos, destinationVector.normalized, new QueryParameters(), 100f);
-        commands[0] = new RaycastCommand(sourcePos, destinationVector.normalized, new QueryParameters(layerMask: LayerMask.GetMask(new string[] { "rayReceive" })));
+        commands[0] = new RaycastCommand(sourcePos, destinationVector.normalized, new QueryParameters(layerMask: LayerMask.GetMask(new string[] { "rayReceive", "Default", "World", "Obstacles", "Interactable" })));
         //commands[0] = new RaycastCommand(sourcePos, destinationVector.normalized);
 
         Debug.DrawRay(sourcePos, destinationVector);

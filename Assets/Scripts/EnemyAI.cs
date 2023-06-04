@@ -15,7 +15,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private float stopFollowingRange;
     [SerializeField] private Vector3 roamPosition;
     [SerializeField] private float speed;
-    [SerializeField] private Vector4 roamingZone;
+    [SerializeField] private Vector3[] roamingZone = null;
 
     [SerializeField] private AIDestinationSetter destinationSetter;
     [SerializeField] private enemyStates currentState;
@@ -40,6 +40,14 @@ public class EnemyAI : MonoBehaviour
 
     void Start()
     {
+        if (roamingZone == null)
+        {
+            roamingZone = new Vector3[]
+            {
+                new Vector3(0, 0, 0),
+                new Vector3(1, 0, 1)
+            };
+        }
         alive = true;
         player = FindObjectOfType<Player>();
         currentState = enemyStates.roaming;
@@ -64,7 +72,8 @@ public class EnemyAI : MonoBehaviour
                 distance = Vector3.Distance(gameObject.transform.position, roamPosition);
                 if (distance <= reachedPointDistance)
                 {
-                    roamPosition = generateRoamPosition();
+                    //roamPosition = generateRoamPosition();
+                    roamPosition = positionInZone(roamingZone);
                 }
                 destinationSetter.target = target.transform;
                 break;
@@ -178,6 +187,12 @@ public class EnemyAI : MonoBehaviour
     {
         var randomDistance = Random.Range(minDistance, maxDistance);
         return randomDistance;
+    }
+
+    private Vector3 positionInZone(Vector3[] zone)
+    {
+        print($"{Mathf.Min(zone[0].z, zone[1].z)}, {Mathf.Max(zone[0].z, zone[1].z)}");
+        return new Vector3(Random.Range(Mathf.Min(zone[0].x, zone[1].x), Mathf.Max(zone[0].x, zone[1].x)), 0, Random.Range(Mathf.Min(zone[0].z, zone[1].z), Mathf.Max(zone[0].z, zone[1].z)));
     }
 
     public void death()
