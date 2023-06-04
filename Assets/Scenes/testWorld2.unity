@@ -4028,8 +4028,6 @@ GameObject:
   - component: {fileID: 1530820919}
   - component: {fileID: 1530820922}
   - component: {fileID: 1530820921}
-  - component: {fileID: 1530820924}
-  - component: {fileID: 1530820923}
   m_Layer: 19
   m_Name: Player
   m_TagString: Untagged
@@ -4102,44 +4100,6 @@ CapsuleCollider:
   m_Height: 3
   m_Direction: 1
   m_Center: {x: 0, y: -1, z: 0}
---- !u!114 &1530820923
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1530820918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e7b73ec037d9554698948ed019a83e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colliders:
-  - {fileID: 1530820922}
-  damageList:
-  - 2
-  velocity: {x: 0, y: 0, z: 0}
-  centerObject: {fileID: 1530820918}
-  alive: 1
---- !u!114 &1530820924
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1530820918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6db3ef7f013111c4dbfe680c980bd605, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  score: 0
-  scene: 
-  DeathPoint: {fileID: 0}
-  Grave: {fileID: 0}
-  XROrigin: {fileID: 0}
-  GraveStone: {fileID: 0}
-  ScoreTm: {fileID: 0}
 --- !u!4 &1645463509 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5473569773201559785, guid: fd8e0760db14a534a89257f68a4f2a8c, type: 3}
@@ -7284,7 +7244,7 @@ PrefabInstance:
     - target: {fileID: 7133065102573609721, guid: 494cb496f841af242838a5fcb883c34e, type: 3}
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
-      objectReference: {fileID: 1530820924}
+      objectReference: {fileID: 0}
     - target: {fileID: 7133065102573609724, guid: 494cb496f841af242838a5fcb883c34e, type: 3}
       propertyPath: m_Name
       value: Chest
@@ -9106,7 +9066,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6554800290308065907
 Transform:
   m_ObjectHideFlags: 0
