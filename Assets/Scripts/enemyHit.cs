@@ -12,20 +12,23 @@ public class enemyHit : MonoBehaviour
     public Vector3 velocity = Vector3.zero;
     public GameObject centerObject;
     public bool alive = true;
-    protected int _hp = 100;
+    protected int _hp = 20;
     public int hp
     {
         get { return _hp; }
         set
         {
+            print("in setter");
             if (alive)
             {
                 if (value <= 0)
                 {
                     
+                    print("dying");
                     _hp = 0;
                     alive = false;
                     gameObject.GetComponent<EnemyAI>().death();
+                    //enemyDie();
                 }
                 else { _hp = value; }
             }
@@ -33,11 +36,15 @@ public class enemyHit : MonoBehaviour
     }
     protected void OnCollisionEnter(Collision collision)
     {
-        print("collision entered" + collision.gameObject);
+        if (gameObject.transform.parent.gameObject.TryGetComponent<Player>(out Player player))
+        {
+            print("call");
+        }
+        //print("collision entered");
         if (alive)
         {
             WeaponObject obj = collision.collider.gameObject.GetComponentInParent<WeaponObject>();
-            print(obj);
+            //print(obj);
             if (obj != null)
             {
                 obj.enemyHit = true;
@@ -56,6 +63,8 @@ public class enemyHit : MonoBehaviour
             }
             velocity = (pos2 - pos1) / Time.deltaTime;
         }
+
+        
     }
 
     protected void enemyDie()

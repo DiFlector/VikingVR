@@ -49,7 +49,8 @@ public class followPlayer : MonoBehaviour
         var commands = new NativeArray<RaycastCommand>(1, Allocator.TempJob);
 
         //commands[0] = new RaycastCommand(sourcePos, destinationVector.normalized, new QueryParameters(), 100f);
-        commands[0] = new RaycastCommand(sourcePos, destinationVector.normalized);
+        commands[0] = new RaycastCommand(sourcePos, destinationVector.normalized, new QueryParameters(layerMask: LayerMask.GetMask(new string[] { "rayReceive" })));
+        //commands[0] = new RaycastCommand(sourcePos, destinationVector.normalized);
 
         Debug.DrawRay(sourcePos, destinationVector);
 
@@ -73,6 +74,7 @@ public class followPlayer : MonoBehaviour
 
         if (batchedHit.collider != null)
         {
+            //print(LayerMask.GetMask(new string[] { "EnemyWeapon" }));
             if (batchedHit.collider.gameObject.TryGetComponent<Player>(out Player a))
             {
                 ans = true;
