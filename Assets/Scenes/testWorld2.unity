@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -456,6 +456,10 @@ PrefabInstance:
     - target: {fileID: 1930843327511323501, guid: 399da7b546e96454396aca36806172d4, type: 3}
       propertyPath: maxHp
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3452711361974998326, guid: 399da7b546e96454396aca36806172d4, type: 3}
+      propertyPath: detailedGizmos
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4554838728694676282, guid: 399da7b546e96454396aca36806172d4, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -4491,6 +4495,10 @@ PrefabInstance:
     - target: {fileID: 2813092142467030405, guid: 825eae3f7cc95bc4584652e207bfb3b3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3593647880429911016, guid: 825eae3f7cc95bc4584652e207bfb3b3, type: 3}
+      propertyPath: data.dataString
+      value: UEsDBBQAAAgIAAAYIeytWCFEnAIAAKoFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGFVNtu2zAM/ZVAz2sRp1m67m1L0nQD2gbLhj3MfWBkOhYiS4YuTdIi/z5KtmM3HTDAgCySh+ThRa9MKFshd9osjMjudYbs84CFf/Zh0CnvcA8brVbiBVubBzrDPdhBNPsBTmhSJQFpdYnOCP5FbWSwH5LQK5FrU86zDU61dZbEOUiLpDLaBbQi0euA7RvAoTlfwjk40h9H5dD8z8orLqGsMIsJnoyTSXKZjBpEfYnmqqVC+MtkEsJoKYVt8mHuUEXKU6isl5FxJoD4xUwC3QLFpnB0GfXBj3lu0TXZGTjMhKEy1V7ZV+2K4KkEu61TfAbpMWZ29WkcE6vd3r+zuEiiOje6vGsjJ8MQxRWCb3/AgYN1vfL2xbO3qXu1A7mFtcTfBaoHvTDaq4yUzvgA9RZHs56rE7tpgXzb2dW5tsLW2lfve5V0vTrGAuynUpTrWP1xLVhJHUt+EzBoqD/fKOM4IbbxRNKQxS+LP2HTH6VGcSuMdaRqAqqQ3lp7E0zZPBYtsPFuqo3CKG6YVKhAusOS3LjzLp7pemHPNLcQ9qYJ3ujaXTiDRHFnPxyeqZZ613XL4ndfVkstlFshGF70/NlC7+7RFo/eSaGwYxQUYV+nWql6Au0/YCtvcuA9mMO98wZn4CDuAeVEY5L1oVTQiFBeyjCRkUVw/odYhO8pFLkAiiujmN4NFTfozfkUBmHjRfZ2ztn16GMyHubjm9F1wmE4ueDZFSYTzNY8v7leA7K4CEJRzUEu66I1raIJUh0XRUPfPm2DhYEqLl9mYLcQL6XutV+oXK+4QVSPtYcTWTQUhN6JbJ4JorlC54SKs8deUyY132KWnhylsbDzvTOQdl5SVoln7YIkZdP4mqUsiE97tTT4LHAXgrfOjuz4F1BLAwQUAAAICAAAGCHsALenTm0AAAB4AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9IzNNdRUEovSizIKAaKGII4pZkpIHa0krmRqaGJQZqJpZG5YXKigZlucopxqqFZakpScpqleVJiqlIsUH1JZUGqX2JuKkRPQGJJRlpmXkpmXrqee1FmijvIaKXYWgBQSwECLQAUAAAICAAAGCHsrVghRJwCAACqBQAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAAGCHsALenTm0AAAB4AAAACQAkAAAAAAAAAAAAAADpAgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAKEDAAAAAA==
       objectReference: {fileID: 0}
     - target: {fileID: 6633559271275048238, guid: 825eae3f7cc95bc4584652e207bfb3b3, type: 3}
       propertyPath: m_Name

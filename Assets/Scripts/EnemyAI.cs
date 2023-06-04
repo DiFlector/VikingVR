@@ -78,7 +78,7 @@ public class EnemyAI : MonoBehaviour
                 destinationSetter.target = target.transform;
                 break;
             case enemyStates.following:
-                currentAnimation = "Run";
+                currentAnimation = "Walk";
                 if (followPlayer.visible)
                 {
                     target.transform.position = player.transform.position;
