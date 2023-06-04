@@ -51,7 +51,7 @@ public class EnemyAI : MonoBehaviour
         alive = true;
         player = FindObjectOfType<Player>();
         currentState = enemyStates.roaming;
-        roamPosition = generateRoamPosition();
+        roamPosition = positionInZone(roamingZone);
         target = new GameObject();
         ailerp.speed = speed / 1.5f;
     }
@@ -72,7 +72,7 @@ public class EnemyAI : MonoBehaviour
                 distance = Vector3.Distance(gameObject.transform.position, roamPosition);
                 if (distance <= reachedPointDistance)
                 {
-                    //roamPosition = generateRoamPosition();
+                    //roamPosition = generateRoamPosiion();
                     roamPosition = positionInZone(roamingZone);
                 }
                 destinationSetter.target = target.transform;
@@ -173,22 +173,6 @@ public class EnemyAI : MonoBehaviour
         }
         return state;
     }
-    private Vector3 generateRoamPosition()
-    {
-        var roamPosition = gameObject.transform.position + generateRandomDirection() * generateRandomWalkableDistance();
-        return roamPosition;
-    }
-    private Vector3 generateRandomDirection()
-    {
-        var newDirection = new Vector3(Random.Range(-1f, 1f), 0f, Random.Range(-1f, 1f));
-        return newDirection.normalized;
-    }
-    private float generateRandomWalkableDistance()
-    {
-        var randomDistance = Random.Range(minDistance, maxDistance);
-        return randomDistance;
-    }
-
     private Vector3 positionInZone(Vector3[] zone)
     {
         print($"{Mathf.Min(zone[0].z, zone[1].z)}, {Mathf.Max(zone[0].z, zone[1].z)}");
@@ -199,6 +183,8 @@ public class EnemyAI : MonoBehaviour
     {
         alive = false;
         ailerp.speed = 0f;
+        ailerp.enableRotation = false;
+        ailerp.canMove = false;
         currentState = enemyStates.death;
         currentAnimation = "Death";
         AnimationController(currentAnimation);
