@@ -52,7 +52,7 @@ public class followPlayer : MonoBehaviour
         commands[0] = new RaycastCommand(sourcePos, destinationVector.normalized, new QueryParameters(layerMask: LayerMask.GetMask(new string[] { "rayReceive", "Default", "World", "Obstacles", "Interactable" })));
         //commands[0] = new RaycastCommand(sourcePos, destinationVector.normalized);
 
-        Debug.DrawRay(sourcePos, destinationVector);
+        //Debug.DrawRay(sourcePos, destinationVector);
 
         // Schedule the batch of raycasts
         //JobHandle handle = RaycastCommand.ScheduleBatch(commands, results, 1, default(JobHandle));

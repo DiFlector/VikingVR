@@ -75,7 +75,7 @@ public class enemyHit : MonoBehaviour
 
     protected void enemyDie()
     {
-        print("enemy destroyer");
+        //print("enemy destroyer");
         gameObject.GetComponent<Rigidbody>().freezeRotation = false;
         Destroy(gameObject.GetComponent<EnemyAI>());
         Destroy(gameObject.GetComponent<AILerp>());

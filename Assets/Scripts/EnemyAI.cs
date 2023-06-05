@@ -175,7 +175,7 @@ public class EnemyAI : MonoBehaviour
     }
     private Vector3 positionInZone(Vector3[] zone)
     {
-        print($"{Mathf.Min(zone[0].z, zone[1].z)}, {Mathf.Max(zone[0].z, zone[1].z)}");
+        //print($"{Mathf.Min(zone[0].z, zone[1].z)}, {Mathf.Max(zone[0].z, zone[1].z)}");
         return new Vector3(Random.Range(Mathf.Min(zone[0].x, zone[1].x), Mathf.Max(zone[0].x, zone[1].x)), 0, Random.Range(Mathf.Min(zone[0].z, zone[1].z), Mathf.Max(zone[0].z, zone[1].z)));
     }
 
@@ -184,7 +184,6 @@ public class EnemyAI : MonoBehaviour
         alive = false;
         ailerp.speed = 0f;
         ailerp.enableRotation = false;
-        ailerp.canMove = false;
         currentState = enemyStates.death;
         currentAnimation = "Death";
         AnimationController(currentAnimation);

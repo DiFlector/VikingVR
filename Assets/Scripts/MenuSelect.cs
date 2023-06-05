@@ -8,7 +8,7 @@ public class MenuSelect : MonoBehaviour
 
     public void SetAnim(string animName)
     {
-        print("gay");
+        //print("gay");
         animator.SetTrigger(animName);
     }
 }

@@ -111,9 +111,9 @@ public class WeaponObject : MonoBehaviour
         if (enemyHit && hitAllowed)
         {
             //print(enemy.velocity);
-            print(enemy.colliders);
-            print(enemy.damageList);
-            float damage = getDamage(type, damageMultiplier, getHitVelocity(velocity, enemy.velocity), getMultiplier(collisionList, enemy.colliders, enemy.damageList));
+            //print(enemy.colliders);
+            //print(enemy.damageList);
+            damage = getDamage(type, damageMultiplier, getHitVelocity(velocity, enemy.velocity), getMultiplier(collisionList, enemy.colliders, enemy.damageList));
             enemy.hp -= (int)Mathf.Ceil(damage);
             enemyHit = false;
             hitAllowed = false;

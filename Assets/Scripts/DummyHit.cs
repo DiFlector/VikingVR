@@ -8,7 +8,7 @@ public class DummyHit : enemyHit
 {
     private void enemyDie()
     {
-        print("destroying");
+        //print("destroying");
         GameObject obj = gameObject;
         Destroy(obj.transform.parent.parent.gameObject.transform.GetChild(2).gameObject);
         obj = obj.transform.GetChild(0).gameObject;
