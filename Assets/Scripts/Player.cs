@@ -1,10 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
-using UnityEditor.Experimental.GraphView;
 
 public class Player : MonoBehaviour
 {

@@ -1,6 +1,4 @@
-using UnityEditor;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 public class randomDots : MonoBehaviour
 {
